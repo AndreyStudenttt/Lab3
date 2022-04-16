@@ -20,7 +20,7 @@ namespace Lab3
         {
             get
             {
-                string text = WidthBox.Text;
+                string text = NameBox.Text;
                 return text;
             }
         }
@@ -54,10 +54,11 @@ namespace Lab3
             this.Close();
             
         }
-
+        bool _ok = false;
         private void buttonOk_Click_1(object sender, EventArgs e)
         {
             this.Close();
+            _ok = true;
         }
 
         private void CreateForm_Load(object sender, EventArgs e)
@@ -67,8 +68,18 @@ namespace Lab3
 
         private void CreateForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            _canceled = true;
-            this.Close();
+            if(_ok == true)
+            {
+                this.Close();
+            }
+            else
+            {
+                _canceled = true;
+                this.Close();
+            }
+            
         }
+
+        
     }
 }
